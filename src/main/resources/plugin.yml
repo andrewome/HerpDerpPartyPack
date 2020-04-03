@@ -1,0 +1,20 @@
+name: HerpDerpPartyPack
+version: 1.0
+main: andrewome.HerpDerpPartyPack.HerpDerpPartyPack
+
+commands:
+  helmetsOn:
+    description: Make everyone put on their golden helmets. Will be removed after a specified time.
+    usage: /<command>
+  seeker:
+    description: Equip your player with items required for seekers
+    usage: /<command>
+  hider:
+    description: Equip your player with items required for hiders
+    usage: /<command>
+  start_zombie:
+    description: Starts zombie mode!
+    usage: /<command>
+  stop_zombie:
+    description: Forcefully stops zombie mode.
+    usage: /<command>
