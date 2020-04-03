@@ -8,7 +8,10 @@ Any sort of documentation is pretty much non existent apart from some comments i
 
 There's also no tests nor linters :3 
 
-Made for Minecraft 1.12.2.
+# Details
+- Made for Minecraft 1.12.2.
+- Assumes everyone is together on voice chat for coordination
+- Survival mode, no items dropped on death
 
 # Game modes includes:
 

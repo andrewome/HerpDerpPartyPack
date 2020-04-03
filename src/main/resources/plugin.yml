@@ -1,6 +1,6 @@
 name: HerpDerpPartyPack
 version: 1.0
-main: andrewome.HerpDerpPartyPack.HerpDerpPartyPack
+main: andrewome.herpderppartypack.HerpDerpPartyPack
 
 commands:
   helmetsOn:
@@ -13,8 +13,14 @@ commands:
     description: Equip your player with items required for hiders
     usage: /<command>
   start_zombie:
-    description: Starts zombie mode!
+    description: Starts zombie infection!
     usage: /<command>
   stop_zombie:
-    description: Forcefully stops zombie mode.
+    description: Forcefully stops zombie infection.
+    usage: /<command>
+  start_hns:
+    description: Starts hide and seek
+    usage: /<command>
+  stop_hns:
+    description: Forcefully stops hide and seek.
     usage: /<command>

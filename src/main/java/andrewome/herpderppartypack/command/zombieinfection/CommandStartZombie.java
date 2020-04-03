@@ -32,7 +32,7 @@ public class CommandStartZombie extends ZombieEditPlayerInventory implements Com
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         // Check if session is ongoing!
         if (state.isTriggered()) {
-            commandSender.sendMessage("Session currently ongoing!");
+            commandSender.sendMessage("Hns session not currently started!");
             return true;
         }
 
@@ -74,15 +74,12 @@ public class CommandStartZombie extends ZombieEditPlayerInventory implements Com
             public void run() {
                 HashMap<String, Player> humans = state.getHumans();
                 HashMap<String, Player> zombies = state.getZombies();
-
                 int numPlayers = humans.size();
-                if (numPlayers == 0)
-                    return;
 
                 // Return a value between 0 and size (not inclusive)
                 int rand = new Random().nextInt(numPlayers);
                 Bukkit.getLogger().log(Level.INFO, rand + " " + numPlayers);
-                // Get player
+                // Get random player
                 Player zombiePlayer = new ArrayList<>(humans.values()).get(rand);
                 String zombiePlayerName = zombiePlayer.getPlayerListName();
 
@@ -93,14 +90,12 @@ public class CommandStartZombie extends ZombieEditPlayerInventory implements Com
                 zombies.put(zombiePlayerName, zombiePlayer);
 
                 // Give human human stuff
-                for (Player p : humans.values()) {
+                for (Player p : humans.values())
                     equipHuman(p);
-                }
 
                 // Give zombie zombie stuff
-                for (Player p : zombies.values()) {
+                for (Player p : zombies.values())
                     equipZombie(p);
-                }
 
                 // Set started state
                 state.setStarted(true);

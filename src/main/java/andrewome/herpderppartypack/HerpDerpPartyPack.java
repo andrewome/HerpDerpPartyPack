@@ -1,10 +1,9 @@
 package andrewome.herpderppartypack;
 
-import andrewome.herpderppartypack.command.hideandseek.CommandHelmetsOn;
-import andrewome.herpderppartypack.command.hideandseek.CommandHider;
-import andrewome.herpderppartypack.command.hideandseek.CommandSeeker;
+import andrewome.herpderppartypack.command.hideandseek.*;
 import andrewome.herpderppartypack.command.zombieinfection.CommandStartZombie;
 import andrewome.herpderppartypack.command.zombieinfection.CommandStopZombie;
+import andrewome.herpderppartypack.event.EventHideAndSeekKill;
 import andrewome.herpderppartypack.event.EventZombieKill;
 import andrewome.herpderppartypack.states.HideAndSeekState;
 import andrewome.herpderppartypack.states.ZombieModeState;
@@ -26,8 +25,11 @@ public class HerpDerpPartyPack extends JavaPlugin {
         this.getCommand("hider").setExecutor(new CommandHider());
         this.getCommand("start_zombie").setExecutor(new CommandStartZombie(this));
         this.getCommand("stop_zombie").setExecutor(new CommandStopZombie(this));
+        this.getCommand("start_hns").setExecutor(new CommandStartHideAndSeek(this));
+        this.getCommand("stop_hns").setExecutor(new CommandStopHideAndSeek(this));
 
         this.getServer().getPluginManager().registerEvents(new EventZombieKill(zombieModeState), this);
+        this.getServer().getPluginManager().registerEvents(new EventHideAndSeekKill(hideAndSeekState), this);
     }
 
     public HideAndSeekState getHideAndSeekState() {
