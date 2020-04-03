@@ -1,13 +1,12 @@
-package andrewome.HerpDerpPartyPack.command.HideAndSeek;
+package andrewome.herpderppartypack.command.hideandseek;
 
-import andrewome.HerpDerpPartyPack.util.HideAndSeekEditPlayerInventory;
+import andrewome.herpderppartypack.util.HideAndSeekEditPlayerInventory;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class CommandSeeker extends HideAndSeekEditPlayerInventory implements CommandExecutor {
-
+public class CommandHider extends HideAndSeekEditPlayerInventory implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         if (!(commandSender instanceof Player))
@@ -15,12 +14,12 @@ public class CommandSeeker extends HideAndSeekEditPlayerInventory implements Com
 
         Player player = (Player) commandSender;
 
-        // Clear inventory and potion effects
+        // Clear inventory and effects
         clearInventory(player);
         clearPotionEffects(player);
 
         // Equip player
-        equipSeeker(player);
+        equipHider(player);
 
         return true;
     }

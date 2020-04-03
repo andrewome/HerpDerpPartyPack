@@ -1,4 +1,4 @@
-package andrewome.HerpDerpPartyPack.util;
+package andrewome.herpderppartypack.util;
 
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
@@ -8,7 +8,7 @@ import org.bukkit.inventory.meta.PotionMeta;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-import static andrewome.HerpDerpPartyPack.util.Constants.TICKS_PER_SECOND;
+import static andrewome.herpderppartypack.util.Constants.TICKS_PER_SECOND;
 
 public abstract class HideAndSeekEditPlayerInventory extends EditPlayerInventory {
     protected void equipHider(Player player) {

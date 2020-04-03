@@ -1,13 +1,13 @@
-package andrewome.HerpDerpPartyPack;
+package andrewome.herpderppartypack;
 
-import andrewome.HerpDerpPartyPack.command.HideAndSeek.CommandHelmetsOn;
-import andrewome.HerpDerpPartyPack.command.HideAndSeek.CommandHider;
-import andrewome.HerpDerpPartyPack.command.HideAndSeek.CommandSeeker;
-import andrewome.HerpDerpPartyPack.command.ZombieInfection.CommandStartZombie;
-import andrewome.HerpDerpPartyPack.command.ZombieInfection.CommandStopZombie;
-import andrewome.HerpDerpPartyPack.event.EventZombieKill;
-import andrewome.HerpDerpPartyPack.states.HideAndSeekState;
-import andrewome.HerpDerpPartyPack.states.ZombieModeState;
+import andrewome.herpderppartypack.command.hideandseek.CommandHelmetsOn;
+import andrewome.herpderppartypack.command.hideandseek.CommandHider;
+import andrewome.herpderppartypack.command.hideandseek.CommandSeeker;
+import andrewome.herpderppartypack.command.zombieinfection.CommandStartZombie;
+import andrewome.herpderppartypack.command.zombieinfection.CommandStopZombie;
+import andrewome.herpderppartypack.event.EventZombieKill;
+import andrewome.herpderppartypack.states.HideAndSeekState;
+import andrewome.herpderppartypack.states.ZombieModeState;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class HerpDerpPartyPack extends JavaPlugin {

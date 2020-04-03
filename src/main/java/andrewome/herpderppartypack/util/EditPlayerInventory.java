@@ -1,18 +1,15 @@
-package andrewome.HerpDerpPartyPack.util;
+package andrewome.herpderppartypack.util;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.PotionMeta;
 import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
 
 import java.util.logging.Level;
 
-import static andrewome.HerpDerpPartyPack.util.Constants.PLAYER_INVENTORY_SIZE;
-import static andrewome.HerpDerpPartyPack.util.Constants.TICKS_PER_SECOND;
+import static andrewome.herpderppartypack.util.Constants.PLAYER_INVENTORY_SIZE;
 
 public abstract class EditPlayerInventory {
 

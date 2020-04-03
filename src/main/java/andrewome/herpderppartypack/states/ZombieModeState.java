@@ -1,10 +1,10 @@
-package andrewome.HerpDerpPartyPack.states;
+package andrewome.herpderppartypack.states;
 
 import org.bukkit.entity.Player;
 
 import java.util.HashMap;
 
-import static andrewome.HerpDerpPartyPack.util.Constants.TICKS_PER_SECOND;
+import static andrewome.herpderppartypack.util.Constants.TICKS_PER_SECOND;
 
 public class ZombieModeState {
     public static final int TIME_TO_GET_READY = 30; // seconds

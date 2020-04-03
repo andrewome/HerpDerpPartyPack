@@ -1,7 +1,7 @@
-package andrewome.HerpDerpPartyPack.event;
+package andrewome.herpderppartypack.event;
 
-import andrewome.HerpDerpPartyPack.states.ZombieModeState;
-import andrewome.HerpDerpPartyPack.util.ZombieEditPlayerInventory;
+import andrewome.herpderppartypack.states.ZombieModeState;
+import andrewome.herpderppartypack.util.ZombieEditPlayerInventory;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

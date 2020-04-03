@@ -1,8 +1,8 @@
-package andrewome.HerpDerpPartyPack.command.ZombieInfection;
+package andrewome.herpderppartypack.command.zombieinfection;
 
-import andrewome.HerpDerpPartyPack.HerpDerpPartyPack;
-import andrewome.HerpDerpPartyPack.states.ZombieModeState;
-import andrewome.HerpDerpPartyPack.util.EditPlayerInventory;
+import andrewome.herpderppartypack.HerpDerpPartyPack;
+import andrewome.herpderppartypack.states.ZombieModeState;
+import andrewome.herpderppartypack.util.EditPlayerInventory;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

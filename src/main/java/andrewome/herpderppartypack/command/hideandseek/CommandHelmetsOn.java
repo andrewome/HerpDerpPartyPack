@@ -1,7 +1,7 @@
-package andrewome.HerpDerpPartyPack.command.HideAndSeek;
+package andrewome.herpderppartypack.command.hideandseek;
 
-import andrewome.HerpDerpPartyPack.HerpDerpPartyPack;
-import andrewome.HerpDerpPartyPack.states.HideAndSeekState;
+import andrewome.herpderppartypack.HerpDerpPartyPack;
+import andrewome.herpderppartypack.states.HideAndSeekState;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -16,8 +16,8 @@ import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static andrewome.HerpDerpPartyPack.states.HideAndSeekState.*;
-import static andrewome.HerpDerpPartyPack.util.Constants.*;
+import static andrewome.herpderppartypack.states.HideAndSeekState.*;
+import static andrewome.herpderppartypack.util.Constants.*;
 
 public class CommandHelmetsOn implements CommandExecutor {
     private HerpDerpPartyPack plugin;

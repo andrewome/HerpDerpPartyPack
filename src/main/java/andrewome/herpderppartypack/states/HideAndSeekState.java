@@ -1,8 +1,8 @@
-package andrewome.HerpDerpPartyPack.states;
+package andrewome.herpderppartypack.states;
 
 import java.time.LocalTime;
 
-import static andrewome.HerpDerpPartyPack.util.Constants.TICKS_PER_SECOND;
+import static andrewome.herpderppartypack.util.Constants.TICKS_PER_SECOND;
 
 public class HideAndSeekState {
     public static final int HELMETS_ON_COOLDOWN = 80;
