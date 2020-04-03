@@ -66,25 +66,4 @@ public abstract class EditPlayerInventory {
 
         return items;
     }
-
-    protected void equipHuman(Player player) {
-        ItemStack[] items = generateEmptyInventory();
-
-        // Diamond sword
-        items[0] = new ItemStack(Material.DIAMOND_SWORD);
-        items[0].addUnsafeEnchantment(Enchantment.DAMAGE_ALL, 8);
-        items[0].addUnsafeEnchantment(Enchantment.KNOCKBACK, 2);
-
-        // Bow
-        items[1] = new ItemStack(Material.BOW);
-        items[1].addUnsafeEnchantment(Enchantment.ARROW_DAMAGE, 2);
-        items[1].addUnsafeEnchantment(Enchantment.ARROW_KNOCKBACK, 2);
-        items[1].addUnsafeEnchantment(Enchantment.ARROW_INFINITE, 2);
-
-        // Arrow and food
-        items[2] = new ItemStack(Material.COOKED_BEEF, 64);
-        items[3] = new ItemStack(Material.ARROW, 64);
-
-        equipPlayer(player, items);
-    }
 }
