@@ -23,7 +23,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import static andrewome.herpderppartypack.gamemodes.capturetheflag.util.CtfPlayerInventory.hasFlag;
+import static andrewome.herpderppartypack.gamemodes.capturetheflag.util.CtfPlayerInventory.checkFlagAndButton;
 import static andrewome.herpderppartypack.gamemodes.capturetheflag.util.CtfState.*;
 import static andrewome.herpderppartypack.util.Constants.TICKS_PER_SECOND;
 import static andrewome.herpderppartypack.util.PlayerInventory.clearInventory;
@@ -63,8 +63,12 @@ public class CtfEvents implements Listener {
         int numDeaths = deathCounter.get(playerName);
         deathCounter.put(playerName, ++numDeaths);
 
-        // duration is floor(number of seconds = 1.5 * number of deaths)
+        // duration is floor(number of seconds = multiplier * number of deaths)
         int duration = floor(DEATH_MULTIPLIER * numDeaths);
+
+        // Include how long the person is dead for in the death message
+        String deathMsg = e.getDeathMessage();
+        e.setDeathMessage(deathMsg + ". " + playerName + " is dead for " + duration + " seconds!");
 
         // Send messages about how long before player can move
         ArrayList<Integer> durationArr = new ArrayList<>();
@@ -148,8 +152,8 @@ public class CtfEvents implements Listener {
         // Get the team of the player
         boolean isBlue = state.getBlueTeam().containsKey(playerName);
 
-        // Check if has flag. If contains, congrats, game ends.
-        if (hasFlag(state, player, isBlue)) {
+        // Check if has flag and clicked correct button. game ends if return true
+        if (checkFlagAndButton(state, player, isBlue, clickedBlock)) {
             Bukkit.broadcastMessage(playerName + " has captured the " + (isBlue ? "red" : "blue") + " team's flag!");
             Bukkit.broadcastMessage("Game ending.");
             for (Player p : state.getBlueTeam().values()) {
@@ -197,7 +201,10 @@ public class CtfEvents implements Listener {
         // Flag is taken, broadcast message, add block to player inventory
         if (flagTaken) {
             Bukkit.broadcastMessage(playerName + " has taken the " + (isBlue ? "red" : "blue") + " team's flag!!");
+            Bukkit.broadcastMessage("Press the button at the top of your Castle to Capture the Flag!");
             player.getInventory().addItem(woolBlockDestroyed.toItemStack(1));
+        } else {
+            player.sendMessage("Why are you trying to capture your own flag?");
         }
 
         // Finally, cancel the breaking of the flag

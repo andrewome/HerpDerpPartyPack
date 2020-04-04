@@ -3,6 +3,7 @@ package andrewome.herpderppartypack.gamemodes.capturetheflag.command;
 import andrewome.herpderppartypack.HerpDerpPartyPack;
 import andrewome.herpderppartypack.gamemodes.capturetheflag.util.CtfState;
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -15,6 +16,8 @@ import java.util.Random;
 import static andrewome.herpderppartypack.gamemodes.capturetheflag.util.CtfPlayerInventory.equipPlayer;
 import static andrewome.herpderppartypack.gamemodes.capturetheflag.util.CtfPlayerInventory.clearInventory;
 import static andrewome.herpderppartypack.gamemodes.capturetheflag.util.CtfPlayerInventory.clearPotionEffects;
+import static andrewome.herpderppartypack.gamemodes.capturetheflag.util.CtfState.BLUE_TEAM_SPAWN;
+import static andrewome.herpderppartypack.gamemodes.capturetheflag.util.CtfState.RED_TEAM_SPAWN;
 
 public class StartCtfCommand implements CommandExecutor {
     HerpDerpPartyPack plugin;
@@ -61,10 +64,21 @@ public class StartCtfCommand implements CommandExecutor {
                 redTeam.put(p.getPlayerListName(), p);
 
         // Inform players which team they're on
-        for (Player p : redTeam.values())
+        Location blueTeamSpawn = BLUE_TEAM_SPAWN.clone();
+        Location redTeamSpawn = RED_TEAM_SPAWN.clone();
+        for (Player p : redTeam.values()) {
             p.sendMessage("You are assigned to the red team!");
-        for (Player p : blueTeam.values())
+            redTeamSpawn.setWorld(p.getWorld());
+            p.teleport(redTeamSpawn);
+        }
+        for (Player p : blueTeam.values()) {
             p.sendMessage("You are assigned to the blue team!");
+            blueTeamSpawn.setWorld(p.getWorld());
+            p.teleport(blueTeamSpawn);
+        }
+
+        Bukkit.broadcastMessage("Blue team: " + blueTeam.values());
+        Bukkit.broadcastMessage("Red team: " + redTeam.values());
 
         // Equip players
         for (Player p : players) {

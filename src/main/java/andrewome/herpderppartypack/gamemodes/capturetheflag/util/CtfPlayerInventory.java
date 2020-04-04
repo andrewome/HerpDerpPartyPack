@@ -10,6 +10,9 @@ import org.bukkit.material.Wool;
 
 import java.util.HashMap;
 
+import static andrewome.herpderppartypack.gamemodes.capturetheflag.util.CtfState.BLUE_TEAM_BUTTON_MATERIAL;
+import static andrewome.herpderppartypack.gamemodes.capturetheflag.util.CtfState.RED_TEAM_BUTTON_MATERIAL;
+
 public abstract class CtfPlayerInventory extends PlayerInventory {
     public static void equipPlayer(Player player) {
         ItemStack[] items = generateEmptyInventory();
@@ -25,15 +28,21 @@ public abstract class CtfPlayerInventory extends PlayerInventory {
         equipPlayer(player, items);
     }
 
-    // returns true if player has the flag. It checks for team and colour too!
-    public static boolean hasFlag(CtfState state, Player player, boolean isBlue) {
+    // returns true if player has the flag and click correct button!
+    public static boolean checkFlagAndButton(CtfState state, Player player, boolean isBlue, Material clickedBlock) {
         // Get invent
         ItemStack[] inventory = player.getInventory().getContents();
 
         // Check if got correct wool
-        if (containsCorrectWool(inventory, isBlue))
+        if (containsCorrectWool(inventory, isBlue) && clickedCorrectBlock(clickedBlock, isBlue))
             return true;
 
+        return false;
+    }
+
+    private static boolean clickedCorrectBlock(Material clickedBlock, boolean isBlue) {
+        if (isBlue && clickedBlock == BLUE_TEAM_BUTTON_MATERIAL || !isBlue && clickedBlock == RED_TEAM_BUTTON_MATERIAL)
+            return true;
         return false;
     }
 
