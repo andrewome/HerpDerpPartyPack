@@ -24,3 +24,12 @@ commands:
   stop_hns:
     description: Forcefully stops hide and seek.
     usage: /<command>
+  start_ctf:
+    description: Starts CTF
+    usage: /<command>
+  stop_ctf:
+    description: Forcefully stops CTF
+    usage: /<command>
+  shift:
+    description: Shift player to opposing team
+    usage: /<command> player_name

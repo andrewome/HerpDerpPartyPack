@@ -12,14 +12,14 @@ import org.bukkit.scheduler.BukkitRunnable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
-import java.util.logging.Level;
 
+import static andrewome.herpderppartypack.gamemodes.zombieinfection.util.ZombiePlayerInventory.clearInventory;
+import static andrewome.herpderppartypack.gamemodes.zombieinfection.util.ZombiePlayerInventory.clearPotionEffects;
 import static andrewome.herpderppartypack.gamemodes.zombieinfection.util.ZombiePlayerInventory.equipHuman;
 import static andrewome.herpderppartypack.gamemodes.zombieinfection.util.ZombiePlayerInventory.equipZombie;
 import static andrewome.herpderppartypack.gamemodes.zombieinfection.util.ZombieModeState.TIME_TO_GET_READY;
 import static andrewome.herpderppartypack.gamemodes.zombieinfection.util.ZombieModeState.TIME_TO_GET_READY_IN_TICKS;
 import static andrewome.herpderppartypack.util.Constants.TICKS_PER_SECOND;
-import static andrewome.herpderppartypack.util.PlayerInventory.clearInventory;
 
 public class StartZombieModeCommand implements CommandExecutor {
     private HerpDerpPartyPack plugin;
@@ -34,7 +34,7 @@ public class StartZombieModeCommand implements CommandExecutor {
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         // Check if session is ongoing!
         if (state.isTriggered()) {
-            commandSender.sendMessage("Zombie Infection not currently started!");
+            commandSender.sendMessage("Zombie Infection is already currently ongoing!");
             return true;
         }
 
@@ -45,6 +45,7 @@ public class StartZombieModeCommand implements CommandExecutor {
         HashMap<String, Player> humans = state.getHumans();
         for (Player p : Bukkit.getOnlinePlayers()) {
             clearInventory(p);
+            clearPotionEffects(p);
             humans.put(p.getPlayerListName(), p);
         }
 
