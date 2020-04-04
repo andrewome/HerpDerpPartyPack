@@ -1,4 +1,4 @@
-package andrewome.herpderppartypack.states;
+package andrewome.herpderppartypack.gamemodes.hideandseek.util;
 
 import org.bukkit.entity.Player;
 

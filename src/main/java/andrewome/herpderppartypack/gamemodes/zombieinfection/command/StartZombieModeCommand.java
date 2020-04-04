@@ -1,8 +1,7 @@
-package andrewome.herpderppartypack.command.zombieinfection;
+package andrewome.herpderppartypack.gamemodes.zombieinfection.command;
 
 import andrewome.herpderppartypack.HerpDerpPartyPack;
-import andrewome.herpderppartypack.states.ZombieModeState;
-import andrewome.herpderppartypack.util.ZombieEditPlayerInventory;
+import andrewome.herpderppartypack.gamemodes.zombieinfection.util.ZombieModeState;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -15,15 +14,18 @@ import java.util.HashMap;
 import java.util.Random;
 import java.util.logging.Level;
 
-import static andrewome.herpderppartypack.states.ZombieModeState.TIME_TO_GET_READY;
-import static andrewome.herpderppartypack.states.ZombieModeState.TIME_TO_GET_READY_IN_TICKS;
+import static andrewome.herpderppartypack.gamemodes.zombieinfection.util.ZombiePlayerInventory.equipHuman;
+import static andrewome.herpderppartypack.gamemodes.zombieinfection.util.ZombiePlayerInventory.equipZombie;
+import static andrewome.herpderppartypack.gamemodes.zombieinfection.util.ZombieModeState.TIME_TO_GET_READY;
+import static andrewome.herpderppartypack.gamemodes.zombieinfection.util.ZombieModeState.TIME_TO_GET_READY_IN_TICKS;
 import static andrewome.herpderppartypack.util.Constants.TICKS_PER_SECOND;
+import static andrewome.herpderppartypack.util.PlayerInventory.clearInventory;
 
-public class CommandStartZombie extends ZombieEditPlayerInventory implements CommandExecutor {
+public class StartZombieModeCommand implements CommandExecutor {
     private HerpDerpPartyPack plugin;
     private ZombieModeState state;
 
-    public CommandStartZombie(HerpDerpPartyPack plugin) {
+    public StartZombieModeCommand(HerpDerpPartyPack plugin) {
         this.plugin = plugin;
         this.state = plugin.getZombieModeState();
     }

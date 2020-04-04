@@ -1,12 +1,15 @@
-package andrewome.herpderppartypack.command.hideandseek;
+package andrewome.herpderppartypack.gamemodes.hideandseek.command;
 
-import andrewome.herpderppartypack.util.HideAndSeekEditPlayerInventory;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class CommandHider extends HideAndSeekEditPlayerInventory implements CommandExecutor {
+import static andrewome.herpderppartypack.gamemodes.hideandseek.util.HideAndSeekPlayerInventory.equipHider;
+import static andrewome.herpderppartypack.util.PlayerInventory.clearInventory;
+import static andrewome.herpderppartypack.util.PlayerInventory.clearPotionEffects;
+
+public class EquipHiderCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {

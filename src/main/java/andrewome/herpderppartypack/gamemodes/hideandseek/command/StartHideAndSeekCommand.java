@@ -1,8 +1,7 @@
-package andrewome.herpderppartypack.command.hideandseek;
+package andrewome.herpderppartypack.gamemodes.hideandseek.command;
 
 import andrewome.herpderppartypack.HerpDerpPartyPack;
-import andrewome.herpderppartypack.states.HideAndSeekState;
-import andrewome.herpderppartypack.util.HideAndSeekEditPlayerInventory;
+import andrewome.herpderppartypack.gamemodes.hideandseek.util.HideAndSeekState;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -10,20 +9,24 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 import java.util.logging.Level;
 
-import static andrewome.herpderppartypack.states.ZombieModeState.TIME_TO_GET_READY;
-import static andrewome.herpderppartypack.states.ZombieModeState.TIME_TO_GET_READY_IN_TICKS;
+import static andrewome.herpderppartypack.gamemodes.hideandseek.util.HideAndSeekPlayerInventory.equipHider;
+import static andrewome.herpderppartypack.gamemodes.hideandseek.util.HideAndSeekPlayerInventory.equipSeeker;
+import static andrewome.herpderppartypack.gamemodes.zombieinfection.util.ZombieModeState.TIME_TO_GET_READY;
+import static andrewome.herpderppartypack.gamemodes.zombieinfection.util.ZombieModeState.TIME_TO_GET_READY_IN_TICKS;
 import static andrewome.herpderppartypack.util.Constants.TICKS_PER_SECOND;
+import static andrewome.herpderppartypack.util.PlayerInventory.clearInventory;
 
-public class CommandStartHideAndSeek extends HideAndSeekEditPlayerInventory implements CommandExecutor {
+public class StartHideAndSeekCommand implements CommandExecutor {
     private HerpDerpPartyPack plugin;
     private HideAndSeekState state;
 
-    public CommandStartHideAndSeek(HerpDerpPartyPack plugin) {
+    public StartHideAndSeekCommand(HerpDerpPartyPack plugin) {
         this.plugin = plugin;
         this.state = plugin.getHideAndSeekState();
     }

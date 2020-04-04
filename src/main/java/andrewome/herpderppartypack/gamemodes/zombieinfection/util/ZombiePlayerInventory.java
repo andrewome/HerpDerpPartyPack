@@ -1,5 +1,6 @@
-package andrewome.herpderppartypack.util;
+package andrewome.herpderppartypack.gamemodes.zombieinfection.util;
 
+import andrewome.herpderppartypack.util.PlayerInventory;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
@@ -10,8 +11,8 @@ import org.bukkit.potion.PotionEffectType;
 
 import static andrewome.herpderppartypack.util.Constants.TICKS_PER_SECOND;
 
-public abstract class ZombieEditPlayerInventory extends EditPlayerInventory {
-    protected void equipZombie(Player player) {
+public abstract class ZombiePlayerInventory extends PlayerInventory {
+    public static void equipZombie(Player player) {
         ItemStack[] items = generateEmptyInventory();
 
         // Diamond sword with 500 sharpness
@@ -55,7 +56,7 @@ public abstract class ZombieEditPlayerInventory extends EditPlayerInventory {
     }
 
 
-    protected void equipHuman(Player player) {
+    public static void equipHuman(Player player) {
         ItemStack[] items = generateEmptyInventory();
 
         // Diamond sword

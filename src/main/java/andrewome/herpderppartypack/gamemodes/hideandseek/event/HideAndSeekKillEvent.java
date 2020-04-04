@@ -1,7 +1,6 @@
-package andrewome.herpderppartypack.event;
+package andrewome.herpderppartypack.gamemodes.hideandseek.event;
 
-import andrewome.herpderppartypack.states.HideAndSeekState;
-import andrewome.herpderppartypack.util.HideAndSeekEditPlayerInventory;
+import andrewome.herpderppartypack.gamemodes.hideandseek.util.HideAndSeekState;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -10,10 +9,14 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 
 import java.util.HashMap;
 
-public class EventHideAndSeekKill extends HideAndSeekEditPlayerInventory implements Listener {
+import static andrewome.herpderppartypack.gamemodes.hideandseek.util.HideAndSeekPlayerInventory.equipSeeker;
+import static andrewome.herpderppartypack.util.PlayerInventory.clearInventory;
+import static andrewome.herpderppartypack.util.PlayerInventory.clearPotionEffects;
+
+public class HideAndSeekKillEvent  implements Listener {
     private HideAndSeekState state;
 
-    public EventHideAndSeekKill(HideAndSeekState state) {
+    public HideAndSeekKillEvent(HideAndSeekState state) {
         this.state = state;
     }
 
@@ -56,7 +59,7 @@ public class EventHideAndSeekKill extends HideAndSeekEditPlayerInventory impleme
     }
 
     private void handleHiderKilled(HashMap<String, Player> hiders, HashMap<String, Player> seekers, PlayerDeathEvent e,
-                      String playerName, Player player) {
+                                   String playerName, Player player) {
         // Shift to seekers array
         hiders.remove(playerName);
         seekers.put(playerName, player);

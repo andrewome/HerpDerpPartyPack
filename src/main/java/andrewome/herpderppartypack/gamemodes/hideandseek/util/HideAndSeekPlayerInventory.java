@@ -1,5 +1,6 @@
-package andrewome.herpderppartypack.util;
+package andrewome.herpderppartypack.gamemodes.hideandseek.util;
 
+import andrewome.herpderppartypack.util.PlayerInventory;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
@@ -10,8 +11,8 @@ import org.bukkit.potion.PotionEffectType;
 
 import static andrewome.herpderppartypack.util.Constants.TICKS_PER_SECOND;
 
-public abstract class HideAndSeekEditPlayerInventory extends EditPlayerInventory {
-    protected void equipHider(Player player) {
+public abstract class HideAndSeekPlayerInventory extends PlayerInventory {
+    public static void equipHider(Player player) {
         // Generate inventory and arm player
         ItemStack[] items = generateEmptyInventory();
 
@@ -34,7 +35,7 @@ public abstract class HideAndSeekEditPlayerInventory extends EditPlayerInventory
         equipPlayer(player, items);
     }
 
-    public void equipSeeker(Player player) {
+    public static void equipSeeker(Player player) {
         // Generate inventory and arm player
         ItemStack[] items = generateEmptyInventory();
 

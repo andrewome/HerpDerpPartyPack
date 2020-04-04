@@ -1,12 +1,12 @@
 package andrewome.herpderppartypack;
 
-import andrewome.herpderppartypack.command.hideandseek.*;
-import andrewome.herpderppartypack.command.zombieinfection.CommandStartZombie;
-import andrewome.herpderppartypack.command.zombieinfection.CommandStopZombie;
-import andrewome.herpderppartypack.event.EventHideAndSeekKill;
-import andrewome.herpderppartypack.event.EventZombieKill;
-import andrewome.herpderppartypack.states.HideAndSeekState;
-import andrewome.herpderppartypack.states.ZombieModeState;
+import andrewome.herpderppartypack.gamemodes.hideandseek.command.*;
+import andrewome.herpderppartypack.gamemodes.hideandseek.event.HideAndSeekKillEvent;
+import andrewome.herpderppartypack.gamemodes.hideandseek.util.HideAndSeekState;
+import andrewome.herpderppartypack.gamemodes.zombieinfection.command.StartZombieModeCommand;
+import andrewome.herpderppartypack.gamemodes.zombieinfection.command.StopZombieModeCommand;
+import andrewome.herpderppartypack.gamemodes.zombieinfection.event.ZombieKillEvent;
+import andrewome.herpderppartypack.gamemodes.zombieinfection.util.ZombieModeState;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class HerpDerpPartyPack extends JavaPlugin {
@@ -20,16 +20,16 @@ public class HerpDerpPartyPack extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        this.getCommand("helmetsOn").setExecutor(new CommandHelmetsOn(this));
-        this.getCommand("seeker").setExecutor(new CommandSeeker());
-        this.getCommand("hider").setExecutor(new CommandHider());
-        this.getCommand("start_zombie").setExecutor(new CommandStartZombie(this));
-        this.getCommand("stop_zombie").setExecutor(new CommandStopZombie(this));
-        this.getCommand("start_hns").setExecutor(new CommandStartHideAndSeek(this));
-        this.getCommand("stop_hns").setExecutor(new CommandStopHideAndSeek(this));
+        this.getCommand("helmetsOn").setExecutor(new HelmetsOnCommand(this));
+        this.getCommand("seeker").setExecutor(new EquipSeekerCommand());
+        this.getCommand("hider").setExecutor(new EquipHiderCommand());
+        this.getCommand("start_zombie").setExecutor(new StartZombieModeCommand(this));
+        this.getCommand("stop_zombie").setExecutor(new StopZombieModeCommand(this));
+        this.getCommand("start_hns").setExecutor(new StartHideAndSeekCommand(this));
+        this.getCommand("stop_hns").setExecutor(new StopHideAndSeekCommand(this));
 
-        this.getServer().getPluginManager().registerEvents(new EventZombieKill(zombieModeState), this);
-        this.getServer().getPluginManager().registerEvents(new EventHideAndSeekKill(hideAndSeekState), this);
+        this.getServer().getPluginManager().registerEvents(new ZombieKillEvent(zombieModeState), this);
+        this.getServer().getPluginManager().registerEvents(new HideAndSeekKillEvent(hideAndSeekState), this);
     }
 
     public HideAndSeekState getHideAndSeekState() {

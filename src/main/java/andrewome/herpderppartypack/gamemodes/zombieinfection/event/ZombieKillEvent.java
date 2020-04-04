@@ -1,7 +1,6 @@
-package andrewome.herpderppartypack.event;
+package andrewome.herpderppartypack.gamemodes.zombieinfection.event;
 
-import andrewome.herpderppartypack.states.ZombieModeState;
-import andrewome.herpderppartypack.util.ZombieEditPlayerInventory;
+import andrewome.herpderppartypack.gamemodes.zombieinfection.util.ZombieModeState;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -10,10 +9,14 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 
 import java.util.HashMap;
 
-public class EventZombieKill extends ZombieEditPlayerInventory implements Listener {
+import static andrewome.herpderppartypack.gamemodes.zombieinfection.util.ZombiePlayerInventory.equipZombie;
+import static andrewome.herpderppartypack.util.PlayerInventory.clearInventory;
+import static andrewome.herpderppartypack.util.PlayerInventory.clearPotionEffects;
+
+public class ZombieKillEvent implements Listener {
     private ZombieModeState state;
 
-    public EventZombieKill(ZombieModeState state) {
+    public ZombieKillEvent(ZombieModeState state) {
         this.state = state;
     }
 
