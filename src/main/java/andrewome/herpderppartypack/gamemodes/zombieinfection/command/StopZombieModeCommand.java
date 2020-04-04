@@ -39,7 +39,7 @@ public class StopZombieModeCommand implements CommandExecutor {
 
         // reset states
         state.resetStates();
-        Bukkit.broadcastMessage("Zombie Infection is force stopping!");
+        Bukkit.broadcastMessage(commandSender.getName() + " has stopped the session!");
         return true;
     }
 }

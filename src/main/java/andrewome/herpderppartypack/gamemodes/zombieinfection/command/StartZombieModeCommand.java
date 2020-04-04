@@ -34,7 +34,7 @@ public class StartZombieModeCommand implements CommandExecutor {
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         // Check if session is ongoing!
         if (state.isTriggered()) {
-            commandSender.sendMessage("Hns session not currently started!");
+            commandSender.sendMessage("Zombie Infection not currently started!");
             return true;
         }
 
@@ -80,7 +80,7 @@ public class StartZombieModeCommand implements CommandExecutor {
 
                 // Return a value between 0 and size (not inclusive)
                 int rand = new Random().nextInt(numPlayers);
-                Bukkit.getLogger().log(Level.INFO, rand + " " + numPlayers);
+
                 // Get random player
                 Player zombiePlayer = new ArrayList<>(humans.values()).get(rand);
                 String zombiePlayerName = zombiePlayer.getPlayerListName();

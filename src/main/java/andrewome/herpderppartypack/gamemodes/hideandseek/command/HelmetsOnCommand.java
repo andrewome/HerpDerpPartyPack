@@ -13,35 +13,36 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Collection;
 
 import static andrewome.herpderppartypack.gamemodes.hideandseek.util.HideAndSeekState.*;
 import static andrewome.herpderppartypack.util.Constants.*;
 
 public class HelmetsOnCommand implements CommandExecutor {
     private HerpDerpPartyPack plugin;
-    private HideAndSeekState states;
+    private HideAndSeekState state;
 
     public HelmetsOnCommand(HerpDerpPartyPack plugin) {
         this.plugin = plugin;
-        this.states = plugin.getHideAndSeekState();
+        this.state = plugin.getHideAndSeekState();
     }
 
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
+        // Check if Hide and Seek game is ongoing
+        if (!state.isStarted()) {
+            commandSender.sendMessage("HnS session not currently started.");
+        }
+
         // Check if on cooldown.
-        if (states.isHelmetsOnOnCooldown()) {
+        if (state.isHelmetsOnOnCooldown()) {
             long seconds
-                = (long)HELMETS_ON_COOLDOWN - ChronoUnit.SECONDS.between(states.getHelmetsOntimestamp(), LocalTime.now());
+                = (long)HELMETS_ON_COOLDOWN - ChronoUnit.SECONDS.between(state.getHelmetsOntimestamp(), LocalTime.now());
             commandSender.sendMessage("Command is on cool down! " + seconds + " seconds remaining.");
             return true;
         }
 
-        // Get all online players without helmets
-        List<Player> players = Bukkit.getOnlinePlayers()
-            .stream()
-            .filter((Player p) -> p.getInventory().getHelmet() == null)
-            .collect(Collectors.toList());
+        // Get all hiders
+        Collection<Player> players = state.getHiders().values();
 
         // For each online player, helmets on.
         Bukkit.broadcastMessage("Helmets On! " + HELMETS_ON_DURATION + " seconds starts now!");
@@ -53,13 +54,13 @@ public class HelmetsOnCommand implements CommandExecutor {
         addTimers(players);
 
         // Update states
-        states.setHelmetsOnOnCooldown(true);
-        states.setHelmetsOntimestamp(LocalTime.now());
+        state.setHelmetsOnOnCooldown(true);
+        state.setHelmetsOntimestamp(LocalTime.now());
 
         return true;
     }
 
-    private void addTimers(List<Player> players) {
+    private void addTimers(Collection<Player> players) {
         /* Timers with regards to the DURATION of the helmets on */
         // Set a timer to remove helmet
         new BukkitRunnable() {
@@ -89,7 +90,7 @@ public class HelmetsOnCommand implements CommandExecutor {
         new BukkitRunnable() {
             public void run() {
                 Bukkit.broadcastMessage("Helmets On is now off cooldown!");
-                states.setHelmetsOnOnCooldown(false);
+                state.setHelmetsOnOnCooldown(false);
             }
         }.runTaskLater(plugin, HELMETS_ON_COOLDOWN_IN_TICKS);
 

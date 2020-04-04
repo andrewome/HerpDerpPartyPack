@@ -37,7 +37,7 @@ public class StopHideAndSeekCommand extends PlayerInventory implements CommandEx
 
         // reset states
         state.resetStates();
-        Bukkit.broadcastMessage("Zombie mode is stopping!");
+        Bukkit.broadcastMessage(commandSender.getName() + " has stopped the HnS session!");
         return true;
     }
 }

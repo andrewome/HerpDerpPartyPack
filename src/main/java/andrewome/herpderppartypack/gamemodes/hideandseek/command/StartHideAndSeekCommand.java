@@ -9,7 +9,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
@@ -17,8 +16,8 @@ import java.util.logging.Level;
 
 import static andrewome.herpderppartypack.gamemodes.hideandseek.util.HideAndSeekPlayerInventory.equipHider;
 import static andrewome.herpderppartypack.gamemodes.hideandseek.util.HideAndSeekPlayerInventory.equipSeeker;
-import static andrewome.herpderppartypack.gamemodes.zombieinfection.util.ZombieModeState.TIME_TO_GET_READY;
-import static andrewome.herpderppartypack.gamemodes.zombieinfection.util.ZombieModeState.TIME_TO_GET_READY_IN_TICKS;
+import static andrewome.herpderppartypack.gamemodes.hideandseek.util.HideAndSeekState.TIME_TO_GET_READY;
+import static andrewome.herpderppartypack.gamemodes.hideandseek.util.HideAndSeekState.TIME_TO_GET_READY_IN_TICKS;
 import static andrewome.herpderppartypack.util.Constants.TICKS_PER_SECOND;
 import static andrewome.herpderppartypack.util.PlayerInventory.clearInventory;
 
@@ -35,7 +34,7 @@ public class StartHideAndSeekCommand implements CommandExecutor {
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         // Check if session is ongoing
         if (state.isStarted()) {
-            commandSender.sendMessage("Hide and Seek session currently ongoing!");
+            commandSender.sendMessage("HnS session already currently ongoing!");
             return true;
         }
 
